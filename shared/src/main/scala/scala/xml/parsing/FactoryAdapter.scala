@@ -148,6 +148,10 @@ abstract class FactoryAdapter extends DefaultHandler with factory.XMLLoader[Node
           m = Attribute(Option(pre), key, Text(value), m)
       }
 
+      if(uri != null && uri != "") {
+        scpe = new NamespaceBinding(splitName(qname)._1,uri, scpe)
+      }
+
       scopeStack push scpe
       attribStack push m
     }
